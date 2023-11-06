@@ -29,14 +29,14 @@
 
 
 
-# Top 3 Ideas:
+## Top 3 Ideas:
 
 1. Weather
-2. Wikipedia
+2. Health App
 3. Job Search 
 
 
-# Weather app:
+### Weather app:
 - **Description**: 
 A functional weather app provides users with current, forecasted, and historical weather information for their location or any chosen location around the world. It typically offers:
 Displaying temperature, humidity, wind speed, and direction, visibility, barometric pressure, and perceived temperature.
@@ -56,6 +56,63 @@ The potential user base is vast, as weather affects everyone. Specifically, user
 Given the ever-changing nature of weather, users would likely open the app several times a day to check updates, especially with personalized notifications prompting them.
 - **Scope**: 
 Depending on the features, such as AR and machine learning for predictive analytics, the app could be moderately to highly challenging to develop. Key will be ensuring the back-end infrastructure can handle real-time data processing and user-generated content.
+
+
+
+### Job Search App
+
+- **Description**:
+A dynamic job search app connects job seekers with potential employers, providing tools for creating resumes, tracking job applications, and offering career development resources. Essential offerings might include:
+    - A smart job matching system that aligns candidates with jobs based on skills, experience, and preferences.
+    - Resume-building tools with templates and AI-powered suggestions for improvements.
+    - Application tracking for jobs applied to, with notifications on application status updates.
+    - Learning resources for skill development and interview preparation.
+    - Networking features that connect job seekers with industry professionals and peers.
+    - Company culture profiles and reviews to aid in researching potential employers.
+    - In-app messaging for direct communication with recruiters and employers.
+- **Category**:
+Business, Productivity
+- **Mobile**:
+The app would leverage mobile-specific features like location-based job searches, calendar sync for interview scheduling, real-time notifications for new job postings, and mobile-optimized application processes.
+- **Story**:
+The app tells the story of "Empowering Your Career Path" by being a one-stop solution for job discovery, application, and career growth, positioning itself as a career accelerator for every job seeker.
+- **Market**:
+Aimed at active job seekers, recent graduates, professionals looking for a career change, and individuals aiming to upskill and find new opportunities in the job market.
+- **Habit**:
+The app would be used frequently by job seekers, potentially on a daily basis, as they search for new postings, network, and work on skill development.
+- **Scope**:
+Developing a job search app can range from moderate to high complexity, particularly in building a sophisticated matching algorithm, ensuring privacy for users' employment data, and integrating with various job posting platforms and services.
+
+
+### Soccer App:
+
+- **Description**:
+A dedicated soccer app would cater to fans, players, and coaches, providing real-time updates, in-depth game analysis, and a platform for community engagement. Its features could encompass:
+        - Live scores, match statistics, and play-by-play updates.
+        - Detailed player and team analytics, including heat maps, possession stats, and player performance metrics.
+        - A video library of highlights, replays, and historic matches.
+        - Personalized news feeds with articles, interviews, and transfer rumors.
+        - Interactive features such as fantasy soccer leagues and betting pools (where legally permitted).
+        - Training modules for players with drills, workouts, and skill development videos.
+        - Networking capabilities for local soccer communities to organize matches, share equipment, or discuss game tactics.
+        - E-commerce integration for purchasing team merchandise, tickets, and soccer gear.
+
+- **Category**:
+Sports, Entertainment, Social Networking
+- **Mobile**:
+Taking advantage of mobile technology, the app would include location-based services to find local matches or fan gatherings, push notifications for game alerts and news, augmented reality for interactive player stats during live games, and integration with wearable devices to track player performance.
+- **Story**:
+The app's narrative is "Uniting the Passion for Soccer," offering fans, amateur players, and coaches a vibrant platform to experience the game they love in a multitude of ways, whether that's following their favorite teams, improving their skills, or connecting with the global soccer community.
+- **Market**:
+Targeting a broad audience of soccer enthusiasts worldwide, from die-hard fans and active players to coaches and sports analysts.
+- **Habit**:
+Given the global nature of soccer with matches occurring around the clock, users would likely check the app multiple times throughout the day for live game updates, latest news, and community interactions.
+- **Scope**:
+This app would be moderately challenging to develop, with significant focus needed on establishing reliable data streams for live updates, a robust video content delivery network, and features to engage users such as fantasy leagues and social networking tools.
+
+
+
+# Final App Decision: Weather APP
 
 
 
