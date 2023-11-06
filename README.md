@@ -1,11 +1,12 @@
 <!-- (This is a comment) INSTRUCTIONS: Go through this page and fill out any **bolded** entries with their correct values.-->
 
-# AND101 Milestone 1 - **Team/App Name**
+# AND101 Milestone 1 - **Team-4/Weather App**
 
 Submitted by:
-- **Team Member 1 Name Here**
-- **Team Member 2 Name Here**
-- **etc**
+- **Team Member 1 Roberto di Bari**
+- **Team Member 2 Emanuael Warzel**
+- **Team Member 3 Sebastian Hernandez**
+- **Team Member 4 Eric Campillo**
 
 Time spent: **4** hours spent in total
 
