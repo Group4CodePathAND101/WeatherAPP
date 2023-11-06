@@ -1,0 +1,63 @@
+#Brainstorm Ideas: 
+
+*Specific body muscle workout 
+    *This app offers targeted exercises for individual muscle groups, allowing users to customize their fitness routines for focused development and strength training.
+*Pokedex App
+    * An interactive digital encyclopedia for Pokémon enthusiasts, providing detailed information on each creature, including stats, abilities, and evolution paths.
+* Weather App 
+    *  Provides real-time weather forecasts, alerts, and climate trends, ensuring users can plan their day with accurate meteorological information.
+* Restaurant Around You API
+    * Connects diners with local eateries based on their preferences and location, offering reviews, menus, and reservation options. 
+* Job Search API 
+    * A comprehensive job hunting tool that aggregates listings from various platforms, tailored to the user's skills, experience, and preferred location.
+* Search for Book API 
+    * Helps bibliophiles find books by title, author, or genre, and provides reviews, ratings, and where to purchase or borrow them.
+* Local Event Finder
+    * An app that curates local events such as concerts, workshops, and festivals, allowing users to discover and participate in community happenings.
+* Movie Finder App 
+    * Offers personalized movie recommendations, showtimes, and streaming options, along with reviews and ratings for film enthusiasts.
+* Recipe Finder APP
+    * Assists home cooks in discovering new recipes based on dietary preferences, ingredients on hand, or desired cuisine types.
+* Soccer app 
+    * A hub for soccer fans to track live scores, follow their favorite teams, and get updates on player stats and upcoming matches.
+* Health app
+     * An app for patients to view names of diseases, symptoms, pictures of the disease, treatments, and next steps on what to do.
+* Wikipedia app
+    * An app that displays text from a wikipedia page along with images and headings. It can use the API to read information from wikipedia quickly and more efficiently.
+* Spotify API app
+    * An app that uses the Spotify API to read music history and to suggest similar artists and to suggest new music. Displays images of artist and albums and songs. Shows description or song lyrics as well.
+
+
+
+#Top 3 Ideas:
+
+1. Weather
+2. Wikipedia
+3. Job Search 
+
+
+# Weather app:
+- **Description**: 
+A functional weather app provides users with current, forecasted, and historical weather information for their location or any chosen location around the world. It typically offers:
+Displaying temperature, humidity, wind speed, and direction, visibility, barometric pressure, and perceived temperature.
+Providing short-term (hourly), medium-term (daily), and long-term (weekly) weather forecasts, including temperature highs and lows, chances of precipitation, and weather conditions like sunny, cloudy, or rainy.
+ Push notifications for severe weather conditions like storms, hurricanes, or extreme temperatures, often sourced from national or regional meteorological services.
+ Real-time weather radar images showing precipitation, cloud cover, and movement to help users visualize the weather patterns.
+ Allowing users to save multiple locations, choose units of measurement (e.g., Celsius or Fahrenheit), and configure the type and frequency of notifications.
+- **Category**:
+Lifestyle, Travel 
+- **Mobile**: 
+The app utilizes mobile-specific features such as real-time weather updates based on the user’s location, augmented reality (AR) to visualize weather patterns, and the integration of smart notifications that alert users about impending weather conditions based on their daily routines and saved locations.
+- **Story**: 
+The app is presented not just as a weather forecasting tool but as a daily companion that helps users make informed decisions about their health, travel, and lifestyle based on the weather. The story revolves around the idea of 'Weather-Informed Decisions' that seamlessly fit into the user’s life.
+- **Market**: 
+The potential user base is vast, as weather affects everyone. Specifically, users who are tech-savvy and rely on mobile apps for lifestyle management would be particularly interested.
+- **Habit**: 
+Given the ever-changing nature of weather, users would likely open the app several times a day to check updates, especially with personalized notifications prompting them.
+- **Scope**: 
+Depending on the features, such as AR and machine learning for predictive analytics, the app could be moderately to highly challenging to develop. Key will be ensuring the back-end infrastructure can handle real-time data processing and user-generated content.
+
+
+
+
+
