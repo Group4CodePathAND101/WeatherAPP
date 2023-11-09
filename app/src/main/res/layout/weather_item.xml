@@ -6,35 +6,29 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/ivWeatherIcon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@android:color/transparent" /> <!-- Placeholder removed -->
-
-    <LinearLayout
-        android:layout_width="0dp"
+        android:id="@+id/weather_icon"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_marginStart="16dp">
+        android:contentDescription="@string/weather_icon" />
 
-        <TextView
-            android:id="@+id/tvWeatherName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="City Name" />
+    <TextView
+        android:id="@+id/weather_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/tvTemperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10°C" />
+    <TextView
+        android:id="@+id/weather_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/tvHumidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Humidity: 50%" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/weather_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="18sp" />
 </LinearLayout>
