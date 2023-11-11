@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
+import com.driuft.weatherapp.WeatherAdapter
 import okhttp3.Headers
 
 class MainActivity : AppCompatActivity() {

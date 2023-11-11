@@ -7,10 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.driuft.random_pets_starter.MainActivity
 import com.driuft.random_pets_starter.R
-import com.driuft.weatherapp.MainActivity.Weather
+//import com.driuft.weatherapp.MainActivity.Weather
 
-class WeatherAdapter(private val weatherList: List<Weather>) :
+class WeatherAdapter(private val weatherList: List<MainActivity.Weather>) :
     RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
