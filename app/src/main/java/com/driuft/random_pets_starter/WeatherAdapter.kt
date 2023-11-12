@@ -15,9 +15,8 @@ class WeatherAdapter(private val weatherList: List<MainActivity.Weather>) :
     RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTextView: TextView = itemView.findViewById(R.id.weather_name)
+        val nameTextView: TextView = itemView.findViewById(R.id.weather_time)
         val temperatureTextView: TextView = itemView.findViewById(R.id.weather_temperature)
-        val humidityTextView: TextView = itemView.findViewById(R.id.weather_humidity)
         val iconImageView: ImageView = itemView.findViewById(R.id.weather_icon)
     }
 
@@ -31,9 +30,9 @@ class WeatherAdapter(private val weatherList: List<MainActivity.Weather>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val weather = weatherList[position]
-        holder.nameTextView.text = weather.name
+        holder.nameTextView.text = weather.time
         holder.temperatureTextView.text = "${weather.temperature}°C"
-        holder.humidityTextView.text = "Humidity: ${weather.humidity}%"
+
 
         // Assuming you have a valid url for the weather icon
         Glide.with(holder.itemView.context)
