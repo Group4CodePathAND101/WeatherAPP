@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/tools"
     card_view:contentPadding="8dp"
     card_view:cardCornerRadius="8dp"
-    card_view:cardBackgroundColor="@color/weatherBackground"
+    card_view:cardBackgroundColor="@color/color_card"
     android:layout_margin="5dp"
     app:ignore="NamespaceTypo">
 
@@ -35,6 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="100dp"
             android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,6 +49,8 @@
         <TextView
             android:id="@+id/weather_temperature"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_marginTop="108dp"
             android:textSize="18sp"

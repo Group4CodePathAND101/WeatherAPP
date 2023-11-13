@@ -2,13 +2,18 @@ package com.driuft.random_pets_starter
 
 
 import android.Manifest
+import java.time.LocalDateTime
+import java.util.Calendar
+import java.time.format.DateTimeFormatter
 import android.content.pm.PackageManager
 import android.location.Location
+import android.os.Build
 import com.google.android.gms.location.LocationRequest
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +30,8 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.*
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -42,10 +49,36 @@ class MainActivity : AppCompatActivity() {
     var weatherTempMax = 0.0
     var weatherTempMin = 0.0
     var weatherTime = ""
+
     var weatherType = ""
 
 
     data class Weather(val time: String, val temperature: Double, val icon: String)
+
+    fun getDrawableResourceForWeatherIcon(iconCode: String): Int? {
+        return when (iconCode) {
+            "01d" -> R.drawable.day_clear
+            "01n" -> R.drawable.night_full_moon_clear
+            "02d" -> R.drawable.day_partial_cloud
+            "02n" -> R.drawable.night_full_moon_partial_cloud
+            "03d" -> R.drawable.cloudy
+            "03n" ->R.drawable.night_half_moon_partial_cloud
+            "04d" -> R.drawable.angry_clouds
+            "04n" -> R.drawable.night_full_moon_sleet
+            "09d" -> R.drawable.rain
+            "09n" -> R.drawable.rain
+            "10d" -> R.drawable.day_rain
+            "10n" ->R.drawable.night_half_moon_rain
+            "11d" -> R.drawable.day_rain_thunder
+            "11n" -> R.drawable.night_full_moon_rain_thunder
+            "13d" -> R.drawable.snow
+            "13n" ->R.drawable.snow
+
+
+            // ... map other icon codes ...
+            else -> null // A default icon
+        }
+    }
 
     private fun hasLocationPermission():Boolean {
         return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==
@@ -110,11 +143,24 @@ class MainActivity : AppCompatActivity() {
                         val longitude = it.longitude
 
                         // Make the weather API request with latitude and longitude
+                        val currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric"
                         client.get(
-                            "https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric",
+                            currentWeatherUrl,
                             object : JsonHttpResponseHandler() {
+                                @RequiresApi(Build.VERSION_CODES.O)
                                 override fun onSuccess(statusCode: Int, headers: Headers, json: JSON) {
                                     Log.d("Weather Success", "$json")
+
+                                    val dateView = findViewById<TextView>(R.id.currentDate)
+
+                                    val calendar = Calendar.getInstance()
+                                    val currentDateTime = LocalDateTime.now()
+                                    val formatter =
+                                        SimpleDateFormat("EEE, d, MMMM HH:mm", Locale.getDefault())
+                                    val formattedDateTime = formatter.format(calendar.time)
+
+                                    dateView.text = formattedDateTime
+
 
                                     if (json.jsonObject.has("name")) {
                                         // If the key exists, then retrieve its value
@@ -123,11 +169,23 @@ class MainActivity : AppCompatActivity() {
 
 
                                         weatherJson = json.jsonObject.getJSONObject("main")
-                                        weatherTempMax = weatherJson.getDouble("temp_max")
-                                        weatherTempMin = weatherJson.getDouble("temp_min")
-                                        weatherTemperature = weatherJson.getDouble("temp")
-                                        weatherType = json.jsonObject.getJSONArray("weather").getJSONObject(0).getString("main")
-                                        weatherIcon = json.jsonObject.getJSONArray("weather").getJSONObject(0).getString("icon")
+                                        weatherTempMax =
+                                            String.format("%.1f", weatherJson.getDouble("temp_max"))
+                                                .toDouble()
+                                        weatherTempMin =
+                                            String.format("%.1f", weatherJson.getDouble("temp_min"))
+                                                .toDouble()
+                                        weatherTemperature =
+                                            String.format("%.1f", weatherJson.getDouble("temp"))
+                                                .toDouble()
+                                        weatherType =
+                                            json.jsonObject.getJSONArray("weather").getJSONObject(0)
+                                                .getString("main")
+                                        weatherIcon =
+                                            json.jsonObject.getJSONArray("weather").getJSONObject(0)
+                                                .getString("icon")
+                                        val drawableId =
+                                            getDrawableResourceForWeatherIcon(weatherIcon)
                                         val weatherTempCombined =
                                             "$weatherTempMax°/$weatherTempMin°"
 
@@ -135,28 +193,20 @@ class MainActivity : AppCompatActivity() {
                                         temperature.text = weatherTemperature.toString()
                                         type.text = weatherType
                                         mmtemp.text = weatherTempCombined
-                                        Glide.with(icon)
-                                            .load("https://openweathermap.org/img/wn/${weatherIcon}.png")
-                                            .fitCenter()
-                                            .into(icon)
+                                        drawableId?.let {
+                                            icon.setImageResource(it)
+                                        } ?: kotlin.run {
+                                            Glide.with(icon)
+                                                .load("https://openweathermap.org/img/wn/${weatherIcon}.png")
+                                                .fitCenter()
+                                                .into(icon)
+                                        }
 
-//                                        for (i in 0 until 10) {
-//                                            weatherJson = json.jsonObject.getJSONArray("list").getJSONObject(i).getJSONObject("main")
-//                                            weatherTime = json.jsonObject.getJSONArray("list").getJSONObject(i).getString("dt_txt").removeRange(0, 11).removeRange(5, 8)
-//                                            weatherTemperature = weatherJson.getDouble("temp")
-//                                            weatherIcon = json.jsonObject.getJSONArray("list")
-//                                                .getJSONObject(i)
-//                                                .getJSONArray("weather").getJSONObject(0)
-//                                                .getString("icon")
-//                                            val weather = Weather(weatherTime, weatherTemperature, weatherIcon)
-//                                            weatherList.add(weather)
-//
-//                                            val adapter = WeatherAdapter(weatherList)
-//                                            rvWeather.adapter = adapter
-//                                        }
+                                        fetchForecastData(client,latitude,longitude,apiKey)
+
                                     }
-                                }
 
+                                }
                                 override fun onFailure(
                                     statusCode: Int,
                                     headers: Headers?,
@@ -174,6 +224,43 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun fetchForecastData(client: AsyncHttpClient, latitude: Double, longitude: Double, apiKey: String) {
+        val forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric"
+
+        client.get(forecastUrl, object : JsonHttpResponseHandler() {
+            override fun onSuccess(statusCode: Int, headers: Headers, json: JSON) {
+                // Process forecast data
+                weatherJson = json.jsonObject.getJSONArray("list").getJSONObject(0).getJSONObject("main")
+                weatherTemperature = weatherJson.getDouble("temp")
+                weatherTime = json.jsonObject.getJSONArray("list").getJSONObject(0).getString("dt_txt")
+                weatherType = json.jsonObject.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("main")
+                weatherIcon = json.jsonObject.getJSONArray("list").getJSONObject(0).getJSONArray("weather")
+                        .getJSONObject(0).getString("icon")
+
+                val weatherTempCombined = "$weatherTempMax°/$weatherTempMin°"
+
+
+                for (i in 0 until 10) {
+                    weatherJson = json.jsonObject.getJSONArray("list").getJSONObject(i).getJSONObject("main")
+                    weatherTime = json.jsonObject.getJSONArray("list").getJSONObject(i).getString("dt_txt").removeRange(0, 11).removeRange(5, 8)
+                    weatherTemperature = String.format("%.1f", weatherJson.getDouble("temp")).toDouble()
+                    weatherIcon = json.jsonObject.getJSONArray("list").getJSONObject(i).getJSONArray("weather").getJSONObject(0).getString("icon")
+                    val weather = Weather(weatherTime, weatherTemperature, weatherIcon)
+                    weatherList.add(weather)
+
+                    val adapter = WeatherAdapter(weatherList)
+                    rvWeather.adapter = adapter
+                }
+            }
+
+            override fun onFailure(statusCode: Int, headers: Headers?, errorResponse: String, throwable: Throwable?) {
+                Log.d("Forecast Error", "Forecast fetch failed: $errorResponse")
+            }
+        })
+    }
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -183,6 +270,7 @@ class MainActivity : AppCompatActivity() {
         val currentWeather = findViewById<TextView>(R.id.currentWeather)
         val weatherIcon = findViewById<ImageView>(R.id.weatherIcon)
         val minmaxTemp = findViewById<TextView>(R.id.mmTemp)
+        val date = findViewById<TextView>(R.id.currentDate)
 
 
 

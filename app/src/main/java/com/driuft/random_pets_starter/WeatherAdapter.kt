@@ -30,14 +30,13 @@ class WeatherAdapter(private val weatherList: List<MainActivity.Weather>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val weather = weatherList[position]
-        holder.nameTextView.text = weather.time
-        holder.temperatureTextView.text = "${weather.temperature}°C"
+            holder.temperatureTextView.text = "${weather.temperature}°C"
+            holder.nameTextView.text = weather.time // Make sure you format this as needed
 
-
-        // Assuming you have a valid url for the weather icon
         Glide.with(holder.itemView.context)
             .load("https://openweathermap.org/img/wn/${weather.icon}.png")
             .into(holder.iconImageView)
+
     }
 
     override fun getItemCount(): Int {
