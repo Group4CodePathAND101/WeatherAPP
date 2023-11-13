@@ -14,7 +14,7 @@ Time spent: **4** hours spent in total
 
 This document provides an overview, project spec, and wireframes for our team's capstone project: **A weather application that keeps you constantly updated on weather conditions**
 
-If we had to describe this milestone in three (3) emojis, they would be: **:) :D ;)**
+If we had to describe this milestone in three (3) emojis, they would be: **☁️🥵🌧️**
 
 ## Milestone Requirements
 
