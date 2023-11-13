@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Random-Pets-Starter</string>
+    <string name="app_name">WeatherAPP</string>
+    <string name="normalDesc">Icon of weather</string>
 </resources>

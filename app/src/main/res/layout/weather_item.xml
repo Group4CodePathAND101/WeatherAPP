@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/tools"
     card_view:contentPadding="8dp"
     card_view:cardCornerRadius="8dp"
-    card_view:cardBackgroundColor="#1f305f"
+    card_view:cardBackgroundColor="@color/weatherBackground"
     android:layout_margin="5dp"
     app:ignore="NamespaceTypo">
 
@@ -26,7 +26,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_editor_absoluteX="20dp"
-            card_view:layout_constraintTop_toTopOf="parent" />
+            card_view:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/normalDesc"/>
 
         <TextView
             android:id="@+id/weather_time"
