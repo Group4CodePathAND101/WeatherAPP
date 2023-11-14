@@ -230,10 +230,16 @@ class MainActivity : AppCompatActivity() {
         client.get(forecastUrl, object : JsonHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Headers, json: JSON) {
                 // Process forecast data
-                weatherJson = json.jsonObject.getJSONArray("list").getJSONObject(0).getJSONObject("main")
+                weatherJson =
+                    json.jsonObject.getJSONArray("list").getJSONObject(0).getJSONObject("main")
+                weatherTempMax = weatherJson.getDouble("temp_max")
+                weatherTempMin = weatherJson.getDouble("temp_min")
                 weatherTemperature = weatherJson.getDouble("temp")
-                weatherTime = json.jsonObject.getJSONArray("list").getJSONObject(0).getString("dt_txt")
-                weatherType = json.jsonObject.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("main")
+                weatherTime =
+                    json.jsonObject.getJSONArray("list").getJSONObject(0).getString("dt_txt")
+                weatherType =
+                    json.jsonObject.getJSONArray("list").getJSONObject(0).getJSONArray("weather")
+                        .getJSONObject(0).getString("main")
                 weatherIcon = json.jsonObject.getJSONArray("list").getJSONObject(0).getJSONArray("weather")
                         .getJSONObject(0).getString("icon")
 
@@ -243,7 +249,7 @@ class MainActivity : AppCompatActivity() {
                 for (i in 0 until 10) {
                     weatherJson = json.jsonObject.getJSONArray("list").getJSONObject(i).getJSONObject("main")
                     weatherTime = json.jsonObject.getJSONArray("list").getJSONObject(i).getString("dt_txt").removeRange(0, 11).removeRange(5, 8)
-                    weatherTemperature = String.format("%.1f", weatherJson.getDouble("temp")).toDouble()
+                    weatherTemperature = String.format("%.1f",weatherJson.getDouble("temp")).toDouble()
                     weatherIcon = json.jsonObject.getJSONArray("list").getJSONObject(i).getJSONArray("weather").getJSONObject(0).getString("icon")
                     val weather = Weather(weatherTime, weatherTemperature, weatherIcon)
                     weatherList.add(weather)
@@ -271,6 +277,7 @@ class MainActivity : AppCompatActivity() {
         val weatherIcon = findViewById<ImageView>(R.id.weatherIcon)
         val minmaxTemp = findViewById<TextView>(R.id.mmTemp)
         val date = findViewById<TextView>(R.id.currentDate)
+
 
 
 

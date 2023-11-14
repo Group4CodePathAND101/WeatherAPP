@@ -13,5 +13,6 @@
     <color name="color_black">#040410</color>
     <color name="highlighted_grey">#e0dde8</color>
     <color name="color_card">#171a34</color>
+    <color name="transparent">#aa171a34</color>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.driuft.weatherapp
 
+import android.graphics.drawable.AdaptiveIconDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.driuft.random_pets_starter.MainActivity
 import com.driuft.random_pets_starter.R
+import com.driuft.random_pets_starter.WeatherIconUtils
+import com.driuft.random_pets_starter.WeatherIconUtils.getDrawableResourceForWeatherIcon
+
 //import com.driuft.weatherapp.MainActivity.Weather
 
 class WeatherAdapter(private val weatherList: List<MainActivity.Weather>) :
+
     RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -33,9 +38,14 @@ class WeatherAdapter(private val weatherList: List<MainActivity.Weather>) :
             holder.temperatureTextView.text = "${weather.temperature}°C"
             holder.nameTextView.text = weather.time // Make sure you format this as needed
 
-        Glide.with(holder.itemView.context)
-            .load("https://openweathermap.org/img/wn/${weather.icon}.png")
-            .into(holder.iconImageView)
+        val iconDrawableId = WeatherIconUtils.getDrawableResourceForWeatherIcon(weather.icon)
+        if (iconDrawableId != null) {
+            holder.iconImageView.setImageResource(iconDrawableId)
+        }
+
+//        Glide.with(holder.itemView.context)
+//            .load("https://openweathermap.org/img/wn/${weather.icon}.png")
+//            .into(holder.iconImageView)
 
     }
 
